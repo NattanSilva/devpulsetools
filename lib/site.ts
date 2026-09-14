@@ -7,8 +7,8 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: "DevPulseTools",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.devpulsetools.com",
+  name: "StackPulse",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://stackpulse.com.br",
   description:
     "Free, fast and private developer utilities — JSON to TypeScript, formatters, converters and generators. 100% client-side, nothing ever leaves your browser.",
   keywords: [
@@ -21,5 +21,5 @@ export const site: SiteConfig = {
     "hash generator",
     "regex tester",
   ],
-  legalEmail: "legal@devpulsetools.com",
+  legalEmail: "legal@stackpulse.com.br",
 };

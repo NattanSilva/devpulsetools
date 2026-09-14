@@ -45,7 +45,7 @@ export default function ContactPage() {
               .
             </p>
             <p className="text-xs leading-5 text-ink-3">
-              General and support: support@devpulsetools.com · Legal and privacy:{site.legalEmail}
+              General and support: suporte@stackpulse.com.br · Legal and privacy:{site.legalEmail}
             </p>
           </div>
 

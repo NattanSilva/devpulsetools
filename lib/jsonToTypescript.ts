@@ -101,7 +101,7 @@ export function jsonToTypescript(input: string, options: ConvertOptions): Conver
 
 export const SAMPLE_JSON = `{
   "id": 7,
-  "name": "DevPulse Tools",
+  "name": "StackPulse",
   "email": "hello@example.com",
   "active": true,
   "score": 92.4,

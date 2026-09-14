@@ -93,7 +93,7 @@ function ComingSoon({ name }: { name: string }) {
         <h2 className="text-lg font-semibold text-ink">Coming soon</h2>
         <p className="mx-auto mt-1 max-w-md text-sm leading-6 text-ink-2">
           <strong className="text-ink">{name}</strong> is being built and will ship in the next
-          release. It will run 100% in your browser like every other DevPulseTools utility. The
+          release. It will run 100% in your browser like every other StackPulse utility. The
           documentation below explains what it does and how it works.
         </p>
       </div>

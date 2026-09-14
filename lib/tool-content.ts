@@ -42,7 +42,7 @@ const jsonFormatter: ToolSeoContent = {
     "Copy the result with the one-click copy button or download it as a .json file.",
   ],
   testCases: [
-    { input: '{"name":"DevPulseTools","tags":["json","tools"],"stats":{"stars":12}}', expected: "Valid — formatted across 5 lines with 2-space indentation and nested objects expanded." },
+    { input: '{"name":"StackPulse","tags":["json","tools"],"stats":{"stars":12}}', expected: "Valid — formatted across 5 lines with 2-space indentation and nested objects expanded." },
     { input: '{"name": "broken", "tags": [1, 2,]}', expected: "Invalid — error reported at line 1, column 24 (unexpected token after array element)." },
   ],
   faqs: [
@@ -150,7 +150,7 @@ const jsonToTypescript: ToolSeoContent = {
   h2: "Why convert JSON to TypeScript?",
   intro: [
     "Modern frontend and backend codebases lean on TypeScript for type safety, and most integrations — REST APIs, third-party webhooks, configuration files — speak JSON. Hand-typing interfaces for each payload is slow, error prone and drifts out of sync the moment the API response changes. Converting JSON to TypeScript types automatically turns a response shape into a compile-time contract: the moment a field is renamed, removed or its type changes, your editor and your CI pipeline catch it before your users do.",
-    "DevPulseTools' JSON to TypeScript converter accepts any valid JSON — objects, arrays, deeply nested payloads, arrays of mixed primitives — and generates a clean, strongly typed declaration with two-space or four-space indentation, in either type or interface style. Helpers like the null union, uniform arrays versus mixed unions, and quoted property names for unusual keys are handled automatically.",
+    "StackPulse's JSON to TypeScript converter accepts any valid JSON — objects, arrays, deeply nested payloads, arrays of mixed primitives — and generates a clean, strongly typed declaration with two-space or four-space indentation, in either type or interface style. Helpers like the null union, uniform arrays versus mixed unions, and quoted property names for unusual keys are handled automatically.",
     "Because the conversion is 100% client-side, sensitive payloads — customer records, internal API responses, production data dumps — are processed locally and never leave the browser. There is no upload, no queue and no processing server, which is also why the result is effectively instantaneous and works even on flaky or offline network connections. The generated declarations are self-contained export type or export interface definitions that drop straight into your codebase.",
   ],
   useCases: [
@@ -210,7 +210,7 @@ const base64Encoder: ToolSeoContent = {
     "Copy the result to the clipboard or download the decoded binary as a file.",
   ],
   testCases: [
-    { input: "Encode: Hello, DevPulseTools", expected: "SGVsbG8sIERldlB1bHNlVG9vbHM= — standard Base64 with padding." },
+    { input: "Encode: Hello, StackPulse", expected: "SGVsbG8sIFN0YWNrUHVsc2U= — standard Base64 with padding." },
     { input: "Decode: U2VuZGluZyBkYXRhIHNhZmVseS4=", expected: "Sending data safely. — the exact original text is restored." },
   ],
   faqs: [

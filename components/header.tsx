@@ -9,7 +9,7 @@ import { MobileDrawer } from "@/components/mobile-nav";
 
 const NAV_LINKS = [
   { href: "/#tools", label: "Tools" },
-  { href: "/#features", label: "Why DevPulseTools" },
+  { href: "/#features", label: "Why StackPulse" },
   { href: "/#how-it-works", label: "How it works" },
 ];
 

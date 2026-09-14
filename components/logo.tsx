@@ -43,11 +43,11 @@ export function Logo({ className = "" }: { className?: string }) {
     <Link
       href="/"
       className={`flex shrink-0 items-center gap-2.5 ${className}`}
-      aria-label="DevPulseTools — home"
+      aria-label="StackPulse — home"
     >
       <LogoMark />
       <span className="text-base font-semibold tracking-tight text-ink md:text-lg">
-        DevPulse<span className="text-accent">Tools</span>
+        Stack<span className="text-accent">Pulse</span>
       </span>
     </Link>
   );

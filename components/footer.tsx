@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
         <div className="grid gap-10 md:grid-cols-[1.2fr_auto_auto] md:gap-16">
           <div className="max-w-sm">
-            <p className="text-sm font-semibold tracking-tight text-ink">DevPulseTools</p>
+            <p className="text-sm font-semibold tracking-tight text-ink">StackPulse</p>
             <p className="mt-2 text-sm leading-6 text-ink-2">
               Fast, free and private developer utilities. Every tool runs 100% in your
               browser — your data never leaves this page.
