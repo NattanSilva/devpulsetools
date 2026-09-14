@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #0a0f18;
+  --surface: #111827;
+  --surface-2: #192334;
+  --surface-3: #202c43;
+  --line: #28334a;
+  --ink: #e7eefb;
+  --ink-2: #9da9c0;
+  --ink-3: #66738c;
+  --accent: #6e8bff;
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --danger: #f87171;
+}
+
+[data-theme="light"] {
+  --canvas: #f4f7fc;
+  --surface: #ffffff;
+  --surface-2: #eef2f9;
+  --surface-3: #dfe6f2;
+  --line: #d6deec;
+  --ink: #0f1b33;
+  --ink-2: #43516d;
+  --ink-3: #7b87a0;
+  --accent: #4c68f5;
+  --ok: #0f9d6c;
+  --warn: #d97706;
+  --danger: #dc2626;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+  --shadow-glow: 0 0 24px -6px rgba(110, 139, 255, 0.55);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  [data-theme="light"] {
+    color-scheme: light;
+  }
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--surface-3) transparent;
+  }
+}
