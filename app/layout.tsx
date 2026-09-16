@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
   alternates: { canonical: "/" },
+  other: {
+    "google-adsense-account": "ca-pub-3836772354953908",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
