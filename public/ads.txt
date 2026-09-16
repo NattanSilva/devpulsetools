@@ -1,3 +1,1 @@
-# Replace the placeholder publisher ID below with your real AdSense publisher ID
-# before going live. Format: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-3836772354953908, DIRECT, f08c47fec0942fa0
