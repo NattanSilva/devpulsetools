@@ -24,7 +24,12 @@ const jetbrainsMono = JetBrains_Mono({
 const themeScript = `(function(){try{var t=window.localStorage.getItem("theme");if(t==="light"){document.documentElement.dataset.theme="light";}}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL("https://www.stackpulse.com.br"),
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   title: {
     default: `${site.name} — Client-side developer utilities`,
     template: `%s · ${site.name}`,
