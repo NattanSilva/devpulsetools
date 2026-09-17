@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
+  verification: {
+    google: "nX8m4qySmm5h3VPp4JGJ9PwdsKzcNsJnFFyp8gkL38E",
+  },
   alternates: { canonical: "/" },
   other: {
     "google-adsense-account": "ca-pub-3836772354953908",
