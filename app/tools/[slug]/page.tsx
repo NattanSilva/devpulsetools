@@ -184,7 +184,9 @@ export default async function ToolPage({
             </div>
           </section>
 
-          {seo ? <ToolSeoDocs content={seo} /> : null}
+          <section className="mt-14" aria-label="Documentação da ferramenta">
+            {seo ? <ToolSeoDocs content={seo} /> : null}
+          </section>
         </div>
 
         <aside aria-label="Sponsor" className="hidden lg:sticky lg:top-24 lg:block">

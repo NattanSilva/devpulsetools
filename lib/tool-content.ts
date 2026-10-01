@@ -13,6 +13,7 @@ export interface ToolSeoContent {
   h2: string;
   intro: string[];
   useCases: string[];
+  bestPractices?: string[];
   howToTitle: string;
   howToSteps: string[];
   testCases: ToolTestCase[];

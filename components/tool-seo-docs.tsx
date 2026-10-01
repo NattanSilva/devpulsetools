@@ -9,17 +9,17 @@ export function ToolSeoDocs({ content }: { content: ToolSeoContent }) {
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-accent/25 bg-accent/[0.14] text-accent">
           <BookOpen className="h-4 w-4" />
         </span>
-        <h2 className="text-xl font-bold tracking-tight text-ink md:text-2xl">{content.h2}</h2>
+        <h2 className="text-xl font-bold tracking-tight text-ink md:text-2xl">Como funciona o {content.slug === 'json-formatter' ? 'JSON Formatter' : content.slug === 'sql-formatter' ? 'SQL Formatter' : content.slug === 'cron-generator' ? 'Cron Generator' : content.slug === 'json-to-typescript' ? 'JSON to TypeScript' : content.slug === 'base64-encoder' ? 'Base64 Encoder/Decoder' : content.slug === 'px-to-rem' ? 'PX to REM' : content.slug === 'uuid-generator' ? 'UUID Generator' : content.slug === 'hash-generator' ? 'Hash Generator' : 'Regex Tester'}?</h2>
       </div>
 
       <div className="mt-5 max-w-3xl space-y-5 text-[15px] leading-7 text-ink-2">
         {content.intro.map((paragraph) => (
-          <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
         ))}
       </div>
 
       <div className="mt-6 grid gap-2.5 max-w-3xl">
-        <h3 className="text-sm font-semibold text-ink">Common use cases</h3>
+        <h3 className="text-sm font-semibold text-ink">Casos de Uso Comuns</h3>
         {content.useCases.map((item) => (
           <div key={item} className="flex items-start gap-2.5 text-sm leading-6 text-ink-2">
             <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-ok" />
@@ -27,6 +27,18 @@ export function ToolSeoDocs({ content }: { content: ToolSeoContent }) {
           </div>
         ))}
       </div>
+
+      {content.bestPractices && content.bestPractices.length > 0 && (
+        <div className="mt-6 grid gap-2.5 max-w-3xl">
+          <h3 className="text-sm font-semibold text-ink">Dicas de boas práticas</h3>
+          {content.bestPractices.map((item) => (
+            <div key={item} className="flex items-start gap-2.5 text-sm leading-6 text-ink-2">
+              <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-ok" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="mt-8">
         <AdInContent />
@@ -61,7 +73,7 @@ export function ToolSeoDocs({ content }: { content: ToolSeoContent }) {
       </div>
 
       <div className="mt-8 space-y-3">
-        <h3 className="text-lg font-semibold text-ink">Frequently asked questions</h3>
+        <h3 className="text-lg font-semibold text-ink">Perguntas Frequentes (FAQ)</h3>
         {content.faqs.map((faq) => (
           <details
             key={faq.q}

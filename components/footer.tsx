@@ -4,10 +4,10 @@ import { site } from "@/lib/site";
 import { tools } from "@/lib/tools";
 
 const legalLinks = [
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms of Use" },
+  { href: "/sobre", label: "Sobre" },
+  { href: "/contato", label: "Contato" },
+  { href: "/politica-de-privacidade", label: "Política de Privacidade" },
+  { href: "/termos-de-uso", label: "Termos de Uso" },
 ];
 
 export function Footer() {
