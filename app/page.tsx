@@ -126,7 +126,8 @@ export default function Home() {
         <div className="mt-8 space-y-12">
           {toolCategories.map((category) => {
             const Icon = category.icon;
-            const items = toolsByCategory(category.id);
+            const items = toolsByCategory(category.id).filter((tool) => tool.status === "live");
+            if (items.length === 0) return null;
             return (
               <section key={category.id} aria-labelledby={`cat-${category.id}`}>
                 <div className="flex items-start gap-3">
@@ -148,6 +149,126 @@ export default function Home() {
               </section>
             );
           })}
+        </div>
+      </section>
+
+      <section className="scroll-mt-24 py-8 md:py-12" aria-labelledby="about-stackpulse">
+        <div className="space-y-10">
+          <article>
+            <h2 id="about-stackpulse" className="text-2xl font-bold tracking-tight text-ink md:text-3xl">
+              Developer tools built for everyday work
+            </h2>
+            <div className="mt-4 max-w-4xl space-y-4 text-base leading-7 text-ink-2">
+              <p>
+                StackPulse delivers developer tools built for everyday work that run directly in your browser. All processing is
+                done client-side with no data uploaded to external servers, ensuring maximum privacy and speed for your workflows.
+              </p>
+              <p>
+                Whether you need to format JSON, convert to TypeScript, generate UUIDs, encode Base64 or validate code snippets,
+                our tools are lightweight, accessible and require no installation.
+              </p>
+            </div>
+          </article>
+
+          <article>
+            <h2 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">Why use StackPulse?</h2>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">Sem instalação</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  Use todas as ferramentas diretamente no navegador, sem downloads ou extensões.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">Processamento no Browser</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  100% client-side. O processamento acontece localmente no seu dispositivo.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">Privacidade</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  Seus dados nunca saem da sua tela. Sem uploads, sem logs, sem rastreamento de conteúdo.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">Fluxo Rápido</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  Resultados instantâneos com interface limpa e foco em produtividade.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article>
+            <h2 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">Who is StackPulse for?</h2>
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">Frontend</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  Ideal para formatar JSON, gerar tipos TypeScript e converter unidades CSS para layouts responsivos.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">Backend</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  Útil para validar dados, gerar UUIDs, calcular hashes e testar expressões regulares.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-line bg-surface p-5">
+                <h3 className="text-base font-semibold text-ink">DevOps</h3>
+                <p className="mt-1.5 text-sm leading-6 text-ink-2">
+                  Crie expressões cron, valide configurações e trabalhe com dados com máxima privacidade.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article>
+            <h2 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">Frequently Asked Questions</h2>
+            <div className="mt-6 space-y-3">
+              <details className="group rounded-2xl border border-line bg-surface p-5 open:bg-surface-2/60">
+                <summary className="cursor-pointer list-none text-sm font-semibold text-ink">
+                  As ferramentas são gratuitas?
+                </summary>
+                <p className="mt-2 text-sm leading-6 text-ink-2">
+                  Sim. Todas as ferramentas do StackPulse são 100% gratuitas para uso pessoal e profissional.
+                </p>
+              </details>
+              <details className="group rounded-2xl border border-line bg-surface p-5 open:bg-surface-2/60">
+                <summary className="cursor-pointer list-none text-sm font-semibold text-ink">
+                  Os dados enviados são armazenados?
+                </summary>
+                <p className="mt-2 text-sm leading-6 text-ink-2">
+                  Não. Todo o processamento acontece no seu navegador (client-side). Nada é enviado, armazenado ou logado em nossos servidores.
+                </p>
+              </details>
+              <details className="group rounded-2xl border border-line bg-surface p-5 open:bg-surface-2/60">
+                <summary className="cursor-pointer list-none text-sm font-semibold text-ink">
+                  Quais navegadores são suportados?
+                </summary>
+                <p className="mt-2 text-sm leading-6 text-ink-2">
+                  Funcionamos em navegadores modernos como Chrome, Firefox, Safari, Edge e Brave com JavaScript habilitado.
+                </p>
+              </details>
+              <details className="group rounded-2xl border border-line bg-surface p-5 open:bg-surface-2/60">
+                <summary className="cursor-pointer list-none text-sm font-semibold text-ink">
+                  Preciso instalar algo?
+                </summary>
+                <p className="mt-2 text-sm leading-6 text-ink-2">
+                  Não. É só abrir a ferramenta no navegador e começar a usar. Não requer instalação ou cadastro.
+                </p>
+              </details>
+              <details className="group rounded-2xl border border-line bg-surface p-5 open:bg-surface-2/60">
+                <summary className="cursor-pointer list-none text-sm font-semibold text-ink">
+                  A privacidade é garantida?
+                </summary>
+                <p className="mt-2 text-sm leading-6 text-ink-2">
+                  Sim. Priorizamos privacidade por design. O processamento local significa que dados sensíveis nunca deixam seu dispositivo.
+                </p>
+              </details>
+            </div>
+          </article>
         </div>
       </section>
 

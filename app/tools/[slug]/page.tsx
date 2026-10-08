@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, ShieldCheck, Sparkles, Timer, Zap } from "lucide-react";
@@ -26,10 +26,10 @@ export async function generateMetadata({
   if (!tool) return {};
 
   const url = `${site.url}/tools/${tool.slug}`;
-  const title = `${tool.name} — free online tool`;
+  const title = `${tool.name} â€” free online tool`;
   const description = tool.description;
   return {
-    title: `${tool.name} — free online tool`,
+    title: `${tool.name} â€” free online tool`,
     description,
     keywords: [...tool.keywords, ...site.keywords],
     alternates: { canonical: `/tools/${tool.slug}` },
@@ -50,7 +50,7 @@ export async function generateMetadata({
 }
 
 const LEGAL_CHIPS = [
-  { icon: ShieldCheck, label: "Free · No upload" },
+  { icon: ShieldCheck, label: "Free - No upload" },
   { icon: Zap, label: "100% local" },
   { icon: Timer, label: "Instant results" },
 ];
@@ -160,7 +160,7 @@ export default async function ToolPage({
         <div className="min-w-0">
           {live ? <JsonToTypescript /> : <ComingSoon name={tool.name} />}
 
-          {/* Sidebar ad — below the output panel on mobile, before the SEO docs */}
+          {/* Sidebar ad â€” below the output panel on mobile, before the SEO docs */}
           <div className="mt-6 lg:hidden">
             <AdSidebar />
           </div>
@@ -184,7 +184,7 @@ export default async function ToolPage({
             </div>
           </section>
 
-          <section className="mt-14" aria-label="Documentação da ferramenta">
+          <section className="mt-14" aria-label="DocumentaÃ§Ã£o da ferramenta">
             {seo ? <ToolSeoDocs content={seo} /> : null}
           </section>
         </div>
@@ -196,3 +196,5 @@ export default async function ToolPage({
     </div>
   );
 }
+
+

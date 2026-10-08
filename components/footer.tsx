@@ -52,6 +52,9 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-wider text-ink-3">
               Company & Legal
             </p>
+            <Link href="/guides" className="text-sm text-ink-2 transition-colors hover:text-accent">
+              Guias
+            </Link>
             {legalLinks.map((link) => (
               <Link
                 key={link.href}

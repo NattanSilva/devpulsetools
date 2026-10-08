@@ -1,4 +1,4 @@
-import {
+﻿import {
   ArrowLeftRight,
   Binary,
   Braces,
@@ -62,10 +62,10 @@ export const tools: ToolMeta[] = [
     category: "formatters",
     tagline: "Format, minify and validate JSON instantly",
     description:
-      "Pretty-print or minify any JSON payload with 2/4 space indentation, plus precise syntax error detection with line highlighting — all in your browser.",
+      "Pretty-print or minify any JSON payload with 2/4 space indentation, plus precise syntax error detection with line highlighting - all in your browser.",
     keywords: ["json formatter", "json validator", "json pretty print", "json minify", "format json"],
     icon: Braces,
-    status: "soon",
+    status: "live",
   },
   {
     slug: "sql-formatter",
@@ -95,7 +95,7 @@ export const tools: ToolMeta[] = [
     category: "converters",
     tagline: "Paste JSON, get clean TypeScript types instantly",
     description:
-      "Convert any JSON payload into a strongly typed TypeScript type or interface automatically. One-click copy, zero uploads — processing happens entirely in your browser.",
+      "Convert any JSON payload into a strongly typed TypeScript type or interface automatically. One-click copy, zero uploads - processing happens entirely in your browser.",
     keywords: [
       "json to typescript",
       "json to interface",
@@ -110,12 +110,12 @@ export const tools: ToolMeta[] = [
     slug: "base64-encoder",
     name: "Base64 Encoder / Decoder",
     category: "converters",
-    tagline: "Encode text and files to Base64 — or decode them back",
+    tagline: "Encode text and files to Base64 - or decode them back",
     description:
-      "Encode plain text or binary files to Base64 strings and decode Base64 back to readable content, fully in the browser.",
+      "Encode plain text or binary files to Base64 strings and decode Base64 back to readable content, fully in your browser.",
     keywords: ["base64 encoder", "base64 decoder", "base64 file", "encode base64"],
     icon: Binary,
-    status: "soon",
+    status: "live",
   },
   {
     slug: "px-to-rem",
@@ -137,7 +137,7 @@ export const tools: ToolMeta[] = [
       "Generate one or many RFC 4122 v4 UUIDs with a single click to copy the whole batch to your clipboard.",
     keywords: ["uuid generator", "guid generator", "uuid v4", "generate uuid"],
     icon: Hash,
-    status: "soon",
+    status: "live",
   },
   {
     slug: "hash-generator",
@@ -145,7 +145,7 @@ export const tools: ToolMeta[] = [
     category: "generators",
     tagline: "MD5, SHA-1, SHA-256 and SHA-512 via the SubtleCrypto API",
     description:
-      "Compute cryptographic hashes of your text with the native Web Crypto API — hashes are computed locally and never transmitted.",
+      "Compute cryptographic hashes of your text with the native Web Crypto API â€” hashes are computed locally and never transmitted.",
     keywords: ["hash generator", "sha256", "md5 hash", "sha512", "sha1"],
     icon: KeyRound,
     status: "soon",
@@ -174,3 +174,12 @@ export function toolsByCategory(category: ToolCategoryId): ToolMeta[] {
 export function getCategory(id: ToolCategoryId): ToolCategory {
   return toolCategories.find((category) => category.id === id) as ToolCategory;
 }
+
+
+
+
+
+
+
+
+
