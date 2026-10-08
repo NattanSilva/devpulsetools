@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 
+export const dynamic = 'force-static';
+
 export async function GET() {
   const content = 'google.com, pub-3836772354953908, DIRECT, f08c47fec0942fa0';
 
