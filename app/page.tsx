@@ -128,9 +128,7 @@ export default function Home() {
         <div className="mt-8 space-y-12">
           {toolCategories.map((category) => {
             const Icon = category.icon;
-            const items = toolsByCategory(category.id).filter(
-              (tool) => tool.status === "live",
-            );
+            const items = toolsByCategory(category.id);
             if (items.length === 0) return null;
             return (
               <section key={category.id} aria-labelledby={`cat-${category.id}`}>

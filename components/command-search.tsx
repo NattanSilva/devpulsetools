@@ -46,7 +46,7 @@ export function CommandSearch({
         aria-expanded={focused}
         aria-controls="search-results"
         aria-label="Search developer tools"
-        placeholder="Search tools… try '+'json'"
+        placeholder="Search tools…"
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         onChange={(e) => setQuery(e.target.value)}

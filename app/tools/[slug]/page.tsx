@@ -1,11 +1,11 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronRight, ShieldCheck, Sparkles, Timer, Zap } from "lucide-react";
+import { ChevronRight, ShieldCheck, Timer, Zap } from "lucide-react";
 import { getTool, tools } from "@/lib/tools";
 import { site } from "@/lib/site";
 import { getToolSeo } from "@/lib/tool-content";
-import { JsonToTypescript } from "@/components/tools/json-to-typescript";
+import { ToolRenderer } from "@/components/tools/tool-registry";
 import { AdSidebar } from "@/components/ads/AdSidebar";
 import { ToolSeoDocs } from "@/components/tool-seo-docs";
 import { ToolCard } from "@/components/tool-card";
@@ -26,10 +26,10 @@ export async function generateMetadata({
   if (!tool) return {};
 
   const url = `${site.url}/tools/${tool.slug}`;
-  const title = `${tool.name} â€” free online tool`;
+  const title = `${tool.name} — free online tool`;
   const description = tool.description;
   return {
-    title: `${tool.name} â€” free online tool`,
+    title,
     description,
     keywords: [...tool.keywords, ...site.keywords],
     alternates: { canonical: `/tools/${tool.slug}` },
@@ -80,27 +80,6 @@ function Hero({ name, tagline }: { name: string; tagline: string }) {
   );
 }
 
-function ComingSoon({ name }: { name: string }) {
-  return (
-    <section
-      className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-line bg-surface px-6 py-14 text-center"
-      aria-label={`${name} is coming soon`}
-    >
-      <span className="grid h-14 w-14 place-items-center rounded-2xl border border-accent/25 bg-accent/[0.14] text-accent">
-        <Sparkles className="h-7 w-7" />
-      </span>
-      <div>
-        <h2 className="text-lg font-semibold text-ink">Coming soon</h2>
-        <p className="mx-auto mt-1 max-w-md text-sm leading-6 text-ink-2">
-          <strong className="text-ink">{name}</strong> is being built and will ship in the next
-          release. It will run 100% in your browser like every other StackPulse utility. The
-          documentation below explains what it does and how it works.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 export default async function ToolPage({
   params,
 }: {
@@ -110,7 +89,6 @@ export default async function ToolPage({
   const tool = getTool(slug);
   if (!tool) notFound();
 
-  const live = tool.status === "live";
   const seo = getToolSeo(slug);
   const related = tools.filter((item) => item.slug !== slug).slice(0, 4);
 
@@ -135,12 +113,30 @@ export default async function ToolPage({
     publisher: { "@type": "Organization", name: site.name, url: site.url },
   };
 
+  const faqLd = seo
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: seo.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
+      }
+    : null;
+
   return (
     <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
+      {faqLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }}
+        />
+      ) : null}
 
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 py-4 text-xs text-ink-3">
         <Link href="/" className="transition-colors hover:text-accent">
@@ -158,12 +154,16 @@ export default async function ToolPage({
 
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-6">
         <div className="min-w-0">
-          {live ? <JsonToTypescript /> : <ComingSoon name={tool.name} />}
+          <ToolRenderer slug={slug} />
 
-          {/* Sidebar ad â€” below the output panel on mobile, before the SEO docs */}
+          {/* Sidebar ad — below the output panel on mobile, before the SEO docs */}
           <div className="mt-6 lg:hidden">
             <AdSidebar />
           </div>
+
+          <section className="mt-14" aria-label="Documentação da ferramenta">
+            {seo ? <ToolSeoDocs content={seo} /> : null}
+          </section>
 
           <section className="mt-14" aria-label="Related tools">
             <div className="flex items-center justify-between">
@@ -183,10 +183,6 @@ export default async function ToolPage({
               ))}
             </div>
           </section>
-
-          <section className="mt-14" aria-label="DocumentaÃ§Ã£o da ferramenta">
-            {seo ? <ToolSeoDocs content={seo} /> : null}
-          </section>
         </div>
 
         <aside aria-label="Sponsor" className="hidden lg:sticky lg:top-24 lg:block">
@@ -196,5 +192,3 @@ export default async function ToolPage({
     </div>
   );
 }
-
-

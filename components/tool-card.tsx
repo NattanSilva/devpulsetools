@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import type { ToolMeta } from "@/lib/tools";
 
 export function ToolCard({ tool }: { tool: ToolMeta }) {
   const Icon = tool.icon;
-  const live = tool.status === "live";
 
   return (
     <Link
@@ -15,14 +14,9 @@ export function ToolCard({ tool }: { tool: ToolMeta }) {
         <span className="grid h-11 w-11 place-items-center rounded-xl border border-accent/25 bg-accent/[0.14] text-accent">
           <Icon className="h-5 w-5" />
         </span>
-        <span
-          className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
-            live
-              ? "border-ok/40 bg-ok/[0.12] text-ok"
-              : "border-line bg-surface-3 text-ink-3"
-          }`}
-        >
-          {live ? "Live" : "Soon"}
+        <span className="inline-flex items-center gap-1 rounded-full border border-ok/40 bg-ok/[0.12] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ok">
+          <ShieldCheck className="h-3 w-3" />
+          100% local
         </span>
       </div>
       <h3 className="text-[15px] font-semibold text-ink">{tool.name}</h3>

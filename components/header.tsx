@@ -10,8 +10,8 @@ import { MobileDrawer } from "@/components/mobile-nav";
 const NAV_LINKS = [
   { href: "/#tools", label: "Tools" },
   { href: "/guides", label: "Guias" },
-  { href: "/#features", label: "Why StackPulse" },
-  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#why-stackpulse", label: "Why StackPulse" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Header() {

@@ -6,6 +6,13 @@ import { ChevronRight, Menu, X } from "lucide-react";
 import { toolCategories, tools, toolsByCategory } from "@/lib/tools";
 import { Logo } from "@/components/logo";
 
+const NAV_LINKS = [
+  { href: "/#tools", label: "Tools" },
+  { href: "/guides", label: "Guias" },
+  { href: "/#why-stackpulse", label: "Why StackPulse" },
+  { href: "/#faq", label: "FAQ" },
+];
+
 export function MobileNav() {
   return (
     <>
@@ -63,9 +70,28 @@ export function MobileDrawer({
         </div>
 
         <div className="px-4 pb-6">
+          <nav aria-label="Main">
+            <ul className="mt-4 space-y-1">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onMouseDown={onClose}
+                    onClick={onClose}
+                    className="flex items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-surface-2"
+                  >
+                    <span>{link.label}</span>
+                    <ChevronRight className="h-4 w-4 shrink-0 text-ink-3" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
           {toolCategories.map((category) => {
             const items = toolsByCategory(category.id);
             const Icon = category.icon;
+            if (items.length === 0) return null;
             return (
               <section key={category.id} className="mt-5">
                 <h2 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink-3">
@@ -92,7 +118,9 @@ export function MobileDrawer({
           })}
 
           <div className="mt-6 flex items-center justify-between border-t border-line pt-4 text-xs text-ink-3">
-            <span>{tools.length} tools · all client-side</span>
+            <span>
+              {tools.length} tools · all client-side
+            </span>
             <span aria-hidden>100% private</span>
           </div>
         </div>
