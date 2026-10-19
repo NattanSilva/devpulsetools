@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Clock, Globe, Mail, Rss, ShieldCheck, Zap } from "lucide-react";
 import { site } from "@/lib/site";
 import { tools } from "@/lib/tools";
+import { guides } from "@/lib/guides";
 
 const legalLinks = [
   { href: "/sobre", label: "Sobre" },
@@ -16,7 +17,7 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-line bg-surface/40">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_auto_auto] md:gap-16">
+        <div className="grid gap-10 md:grid-cols-[1.2fr_auto_auto_auto] md:gap-12">
           <div className="max-w-sm">
             <p className="text-sm font-semibold tracking-tight text-ink">StackPulse</p>
             <p className="mt-2 text-sm leading-6 text-ink-2">
@@ -36,7 +37,8 @@ export function Footer() {
             </ul>
           </div>
 
-          <nav aria-label="Tools" className="grid grid-cols-2 gap-x-10 gap-y-2 sm:gap-x-14">
+          <nav aria-label="Tools" className="grid content-start gap-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-ink-3">Tools</p>
             {tools.map((tool) => (
               <Link
                 key={tool.slug}
@@ -48,13 +50,26 @@ export function Footer() {
             ))}
           </nav>
 
-          <nav aria-label="Company" className="grid gap-y-2 content-start">
+          <nav aria-label="Guides" className="grid content-start gap-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-ink-3">Guias</p>
+            <Link href="/guides" className="text-sm text-ink-2 transition-colors hover:text-accent">
+              Todos os guias
+            </Link>
+            {guides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="text-sm text-ink-2 transition-colors hover:text-accent"
+              >
+                {guide.topic}: {guide.title.split(":")[0]}
+              </Link>
+            ))}
+          </nav>
+
+          <nav aria-label="Company" className="grid content-start gap-y-2">
             <p className="text-xs font-semibold uppercase tracking-wider text-ink-3">
               Company & Legal
             </p>
-            <Link href="/guides" className="text-sm text-ink-2 transition-colors hover:text-accent">
-              Guias
-            </Link>
             {legalLinks.map((link) => (
               <Link
                 key={link.href}
