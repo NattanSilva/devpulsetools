@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `Termos de Uso �� ${site.name}`,
+    title: `Termos de Uso — ${site.name}`,
     description: `Termos de uso para as utilidades gratuitas 100% no navegador fornecidas pelo ${site.name}.`,
     url: `${site.url}/termos-de-uso`,
     locale: "pt_BR",
   },
 };
 
-const updated = "September 2026";
+const updated = "19 de outubro de 2026";
 
 function Section({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
@@ -31,139 +31,148 @@ function Section({ n, title, children }: { n: string; title: string; children: R
 
 export default function TermsPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 md:px-6 md:py-14">
+    <div
+      className="mx-auto w-full max-w-3xl px-4 py-10 md:px-6 md:py-14"
+      lang="pt-BR"
+    >
       <h1 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">Termos de Uso</h1>
-      <p className="mt-2 text-sm text-ink-3">Last updated: {updated}</p>
+      <p className="mt-2 text-sm text-ink-3">Última atualização: {updated}</p>
 
       <div className="mt-8 space-y-8 text-[15px] leading-7 text-ink-2">
-        <Section n="1" title="Acceptance of these terms">
+        <Section n="1" title="Aceitação destes termos">
           <p>
-            Welcome to {site.name}. By accessing or using {site.url} you agree to be bound by these
-            Terms of Use, our{" "}
-            <Link href="/privacy" className="font-medium text-accent">
-              Privacy Policy
+            Boas-vindas ao {site.name}. Ao acessar ou utilizar {site.url}, você concorda em ficar
+            vinculado a estes Termos de Uso, à nossa{" "}
+            <Link href="/politica-de-privacidade" className="font-medium text-accent">
+              Política de Privacidade
             </Link>{" "}
-            and any additional terms referenced here. If you do not agree with any part of these
-            terms, please stop using the service.
+            e a quaisquer outros termos aqui referenciados. Se você não concorda com qualquer parte
+            destes termos, pare de utilizar o serviço.
           </p>
         </Section>
 
-        <Section n="2" title="About the service">
+        <Section n="2" title="Sobre o serviço">
           <p>
-            {site.name} provides a collection of free utility applications for software developers,
-            DevOps engineers and IT professionals, including JSON formatting, TypeScript type
-            generation, Base64 encoding, cron expression building, hash generation and regex
-            testing. All tools run entirely in your browser (client-side) and do not require an
-            account or registration.
+            O {site.name} oferece um conjunto de aplicações utilitárias gratuitas para
+            desenvolvedores de software, engenheiros de DevOps e profissionais de TI — incluindo
+            formatação e validação de JSON, geração de tipos TypeScript, codificação Base64 e
+            geração de UUID. Todas as ferramentas rodam inteiramente no seu navegador
+            (client-side) e não exigem conta nem cadastro.
           </p>
         </Section>
 
-        <Section n="3" title="Use of the tools">
+        <Section n="3" title="Uso das ferramentas">
           <p>
-            You may use the tools free of charge for personal, academic and professional purposes.
-            You agree not to: (a) use the tools to process unlawful, infringing or malicious data;
-            (b) attempt to disrupt, overload, reverse engineer or otherwise interfere with the
-            service; (c) use the tools to generate or distribute spam, malware or harmful content;
-            or (d) resell, scrape or commercially exploit the service without our prior written
-            consent.
+            Você pode usar as ferramentas gratuitamente para fins pessoais, acadêmicos e
+            profissionais. Você concorda em não: (a) usar as ferramentas para processar dados
+            ilegais, que violem direitos ou maliciosos; (b) tentar interromper, sobrecarregar,
+            fazer engenharia reversa ou interferir de qualquer outra forma no serviço; (c) usar as
+            ferramentas para gerar ou distribuir spam, malware ou conteúdo nocivo; ou (d) revender,
+            coletar de forma automatizada ou explorar comercialmente o serviço sem nosso consentimento
+            prévio por escrito.
           </p>
         </Section>
 
-        <Section n="4" title="Processing of your data — disclaimer">
+        <Section n="4" title="Tratamento dos seus dados — ressalva">
           <p>
-            The tools process data locally, within your browser. {site.name} does not receive,
-            upload, store or log the content you process. Consequently, we cannot be responsible
-            for any loss, damage or unintended disclosure arising from how you handle your own
-            data, including its transmission over your own network, or from the use of your
-            device&apos;s processing capabilities.
+            As ferramentas processam os dados localmente, dentro do seu navegador. O {site.name} não
+            recebe, não envia, não armazena e não registra o conteúdo que você processa. Em
+            consequência disso, não podemos responder por perdas, danos ou divulgações
+            involuntárias decorrentes do modo como você trata os seus próprios dados — incluindo a
+            transmissão deles pela sua rede — nem pelo uso dos recursos de processamento do seu
+            dispositivo.
           </p>
         </Section>
 
-        <Section n="5" title="Accuracy of output">
+        <Section n="5" title="Precisão das saídas">
           <p>
-            We work to keep every utility correct and reliable, but output is generated for your
-            convenience and may contain errors. It is your responsibility to validate, test and
-            review any code, configuration, hash, schema or other result before adopting it in
-            production environments, automated systems or security-critical contexts. Never use
-            hashes or encoded outputs as a security control without independent verification.
+            Trabalhamos para manter cada utilitária correta e confiável, mas as saídas são geradas
+            para a sua conveniência e podem conter erros. É responsabilidade sua validar, testar e
+            revisar qualquer código, configuração, hash, schema ou outro resultado antes de adotá-lo
+            em ambientes de produção, sistemas automatizados ou contextos sensíveis em termos de
+            segurança. Nunca use hashes ou saídas codificadas como mecanismo de segurança sem
+            verificação independente.
           </p>
         </Section>
 
-        <Section n="6" title="Intellectual property">
+        <Section n="6" title="Propriedade intelectual">
           <p>
-            The site design, text, logos, trademarks and the underlying software of {site.name} are
-            our property or the property of their respective owners and are protected by
-            applicable intellectual property laws. Output generated by the tools belongs to you and
-            may be used freely in your projects. Third-party trademarks mentioned on this site
-            belong to their respective owners and are referenced only for identification purposes.
+            O design do site, os textos, os logotipos, as marcas registradas e o software subjacente
+            do {site.name} são propriedade nossa ou de seus respectivos donos e estão protegidos
+            pelas leis de propriedade intelectual aplicáveis. A saída gerada pelas ferramentas
+            pertence a você e pode ser usada livremente em seus projetos. Marcas de terceiros
+            mencionadas neste site pertencem aos seus respectivos donos e são referenciadas apenas
+            para fins de identificação.
           </p>
         </Section>
 
-        <Section n="7" title="Advertising and affiliates">
+        <Section n="7" title="Publicidade e afiliados">
           <p>
-            The site displays advertising through third-party partners, including Google AdSense,
-            to keep the tools free. We may also include affiliate links to cloud, hosting and
-            developer tool providers. Clicking an advertisement or affiliate link may result in a
-            commission for us at no additional cost to you and may lead you to third-party sites
-            governed by their own terms and privacy policies, for which we are not responsible.
+            O site exibe publicidade por meio de parceiros de terceiros, incluindo o Google AdSense,
+            para manter as ferramentas gratuitas. Também podemos incluir links de afiliados para
+            provedores de nuvem, hospedagem e ferramentas de desenvolvimento. Clicar em um anúncio
+            ou link de afiliado pode gerar uma comissão para nós, sem custo adicional para você, e
+            pode levar você a sites de terceiros submetidos aos seus próprios termos e políticas de
+            privacidade, pelos quais não respondemos.
           </p>
         </Section>
 
-        <Section n="8" title="No warranty">
+        <Section n="8" title="Ausência de garantia">
           <p>
-            The service is provided &quot;as is&quot; and &quot;as available&quot;, without
-            warranties of any kind, whether express or implied, including implied warranties of
-            merchantability, fitness for a particular purpose and non-infringement. We do not
-            warrant that the service will be uninterrupted, error-free, secure or always available.
+            O serviço é fornecido &quot;como está&quot; e &quot;conforme disponível&quot;, sem garantias
+            de qualquer natureza, expressas ou implícitas, incluindo garantias implícitas de
+            comercialização, adequação a uma finalidade específica e não infração. Não garantimos
+            que o serviço seja ininterrupto, livre de erros, seguro ou sempre disponível.
           </p>
         </Section>
 
-        <Section n="9" title="Limitation of liability">
+        <Section n="9" title="Limitação de responsabilidade">
           <p>
-            To the maximum extent permitted by applicable law, {site.name} and its contributors are
-            not liable for any indirect, incidental, special, consequential or punitive damages, or
-            any loss of profits, data, goodwill or business opportunities, arising out of or in
-            connection with the use of, or inability to use, the service, even if advised of the
-            possibility of such damages.
+            Na máxima extensão permitida pela legislação aplicável, o {site.name} e seus
+            colaboradores não respondem por quaisquer danos indiretos, incidentais, especiais,
+            consequentes ou punitivos, nem por perdas de lucros, dados, reputação ou oportunidades
+            de negócio, decorrentes do uso ou da impossibilidade de uso do serviço, ainda que
+            informados sobre a possibilidade de tais danos.
           </p>
         </Section>
 
-        <Section n="10" title="Third-party services">
+        <Section n="10" title="Serviços de terceiros">
           <p>
-            The service may integrate or link to third-party products, analytics and advertising
-            networks. We do not control those third parties and accept no responsibility for their
-            content, availability, practices or policies. Your interaction with them is subject to
-            their own terms and privacy policies.
+            O serviço pode integrar ou direcionar para produtos, analytics e redes de publicidade
+            de terceiros. Não controlamos esses terceiros e não assumimos responsabilidade pelo
+            seu conteúdo, disponibilidade, práticas ou políticas. A sua interação com eles está
+            sujeita aos seus próprios termos e políticas de privacidade.
           </p>
         </Section>
 
-        <Section n="11" title="Changes to the service and these terms">
+        <Section n="11" title="Alterações no serviço e nestes termos">
           <p>
-            We may modify, expand, deprecate or discontinue any tool, feature or part of the
-            service at any time, with or without notice. We may also revise these Terms of Use;
-            the updated version will apply as of its &quot;Last updated&quot; date. Continued use
-            of the service after changes constitutes acceptance of the revised terms.
+            Podemos modificar, ampliar, descontinuar ou aposentar qualquer ferramenta, recurso ou
+            parte do serviço a qualquer momento, com ou sem aviso. Também podemos revisar estes
+            Termos de Uso; a versão atualizada valerá a partir da sua data de &quot;última
+            atualização&quot;. O uso contínuo do serviço após as alterações constitui aceitação dos
+            termos revisados.
           </p>
         </Section>
 
-        <Section n="12" title="Governing law and disputes">
+        <Section n="12" title="Legislação aplicável e resolução de disputas">
           <p>
-            These terms are governed by the laws of Brazil. The parties submit to the exclusive
-            jurisdiction of the competent courts of Brazil for any dispute arising from these
-            terms, without prejudice to mandatory consumer-protection rules that may apply where
-            you reside.
+            Estes termos são regidos pelas leis brasileiras. As partes se submetem à jurisdição
+            exclusiva dos中级人民法院 competentes do Brasil para qualquer disputa oriunda destes
+            termos, sem prejuízo das regras de proteção ao consumidor que sejam obrigatórias no
+            local onde você reside.
           </p>
         </Section>
 
-        <Section n="13" title="Contact">
+        <Section n="13" title="Contato">
           <p>
-            Questions about these terms? Write to{" "}
+            Dúvidas sobre estes termos? Escreva para{" "}
             <a href={`mailto:${site.legalEmail}`} className="font-medium text-accent">
               {site.legalEmail}
             </a>{" "}
-            or use the{" "}
-            <Link href="/contact" className="font-medium text-accent">
-              Contact page
+            ou use a{" "}
+            <Link href="/contato" className="font-medium text-accent">
+              página de contato
             </Link>
             .
           </p>
@@ -171,9 +180,9 @@ export default function TermsPage() {
       </div>
 
       <p className="mt-10 text-sm text-ink-3">
-        See also the{" "}
-        <Link href="/privacy" className="font-medium text-accent">
-          Privacy Policy
+        Consulte também a{" "}
+        <Link href="/politica-de-privacidade" className="font-medium text-accent">
+          Política de Privacidade
         </Link>
         .
       </p>

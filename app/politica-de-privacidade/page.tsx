@@ -4,19 +4,19 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade",
-  description: `Como o ${site.name} processa dados �?" política de privacidade em conformidade com a LGPD e o GDPR, incluindo cookies e Google AdSense.`,
+  description: `Como o ${site.name} processa dados — política de privacidade em conformidade com a LGPD e o GDPR, incluindo cookies e Google AdSense.`,
   alternates: { canonical: "/politica-de-privacidade" },
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `Política de Privacidade �� ${site.name}`,
-    description: `Como o ${site.name} processa dados �?" política de privacidade em conformidade com a LGPD e o GDPR, incluindo cookies e Google AdSense.`,
+    title: `Política de Privacidade — ${site.name}`,
+    description: `Como o ${site.name} processa dados — política de privacidade em conformidade com a LGPD e o GDPR, incluindo cookies e Google AdSense.`,
     url: `${site.url}/politica-de-privacidade`,
     locale: "pt_BR",
   },
 };
 
-const updated = "September 2026";
+const updated = "19 de outubro de 2026";
 
 function Section({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
@@ -31,87 +31,94 @@ function Section({ n, title, children }: { n: string; title: string; children: R
 
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 md:px-6 md:py-14">
-      <h1 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">Política de Privacidade</h1>
-      <p className="mt-2 text-sm text-ink-3">Last updated: {updated}</p>
+    <div
+      className="mx-auto w-full max-w-3xl px-4 py-10 md:px-6 md:py-14"
+      lang="pt-BR"
+    >
+      <h1 className="text-2xl font-bold tracking-tight text-ink md:text-3xl">
+        Política de Privacidade
+      </h1>
+      <p className="mt-2 text-sm text-ink-3">Última atualização: {updated}</p>
 
       <div className="mt-8 space-y-8 text-[15px] leading-7 text-ink-2">
-        <Section n="1" title="Introduction">
+        <Section n="1" title="Introdução">
           <p>
-            {site.name} (&quot;we&quot;, &quot;us&quot; or &quot;our&quot;) operates{" "}
-            {site.url} and provides a collection of free, client-side developer utilities. This
-            Privacy Policy explains what information we process, why we process it, and the rights
-            you have over your personal data, in compliance with the Brazilian General Data
-            Protection Law (LGPD — Lei nº 13.709/2018) and the European General Data Protection
-            Regulation (GDPR).
+            O {site.name} (&quot;nós&quot;) opera o site {site.url} e oferece um conjunto de utilitárias
+            gratuitas para desenvolvedores que rodam inteiramente no navegador. Esta Política de
+            Privacidade explica quais informações processamos, por que processamos e quais são os
+            seus direitos sobre os seus dados pessoais, em conformidade com a Lei Geral de Proteção
+            de Dados brasileira (LGPD — Lei nº 13.709/2018) e o Regulamento Geral de Proteção de
+            Dados europeu (GDPR).
           </p>
           <p>
-            The core design principle of the platform is <strong>local processing</strong>: the
-            JSON payloads, text, hashes, regular expressions and any other content you paste into a
-            tool are processed exclusively inside your own browser. We never receive, transmit,
-            store or process that content on our servers.
-          </p>
-        </Section>
-
-        <Section n="2" title="Data we do NOT collect">
-          <p>
-            Because all processing happens on your device, we do not collect, store or have any
-            access to the data you submit to the tools, including pasted text, uploaded content,
-            generated output or download history. There are no accounts, no user profiles and no
-            persistent personal identifiers tied to tool usage.
+            O princípio central da plataforma é o <strong>processamento local</strong>: payloads
+            JSON, textos, arquivos, hashes e quaisquer conteúdos que você cole em uma ferramenta
+            são processados exclusivamente dentro do seu próprio navegador. Nunca recebemos,
+            transmitimos, armazenamos ou processamos esse conteúdo em nossos servidores.
           </p>
         </Section>
 
-        <Section n="3" title="Data we may collect">
+        <Section n="2" title="Dados que NÃO coletamos">
           <p>
-            We may process limited, non-personal or anonymized technical data to operate and
-            improve the site, such as aggregated page views, device type, browser family and
-            approximate region. This data is used to measure performance, diagnose errors and
-            understand which tools are useful — always in aggregate and never to identify you
-            individually.
+            Como todo o processamento acontece no seu dispositivo, não coletamos, não armazenamos e
+            não temos acesso aos dados que você submete às ferramentas — incluindo textos colados,
+            arquivos carregados, saídas geradas ou histórico de downloads. Não existem contas, nem
+            perfis de usuário, nem identificadores pessoais persistentes vinculados ao uso das
+            ferramentas.
           </p>
         </Section>
 
-        <Section n="4" title="Cookies and local storage">
+        <Section n="3" title="Dados que podemos coletar">
           <p>
-            The site uses browser local storage solely to remember interface preferences, such as
-            your chosen light or dark theme. This preference is stored locally and is not
-            transmitted to us.
-          </p>
-          <p>
-            We do not set marketing cookies of our own. However, our advertising service provider
-            may use cookies, pixel tags or similar technologies to serve ads based on your prior
-            visits to this and other websites, as described in the Advertising section below.
+            Podemos processar dados técnicos não pessoais ou anonimizados para operar e melhorar o
+            site, como visualizações agregadas de página, tipo de dispositivo, família de navegador
+            e região aproximada. Esses dados servem para medir desempenho, diagnosticar erros e
+            entender quais ferramentas são úteis — sempre de forma agregada e nunca para identificar
+            você individualmente.
           </p>
         </Section>
 
-        <Section n="5" title="Advertising and third-party ad identifiers">
+        <Section n="4" title="Cookies e armazenamento local">
           <p>
-            We fund the free utilities through advertising served by{" "}
-            <strong>Google AdSense</strong> and its certified advertising partners. Google and its
-            partners may employ cookies and advertising identifiers (such as the Google Advertising
-            ID on Android and the ID for Advertisers on iOS) to display ads, including
-            personalised ads shown to you across the web, and to measure the performance of those
-            ads.
+            O site usa o armazenamento local do navegador exclusivamente para lembrar preferências
+            de interface, como o tema claro ou escuro escolhido. Essa preferência fica guardada
+            localmente e não é transmitida para nós.
           </p>
           <p>
-            When an advertisement is displayed, third-party ad vendors and ad networks may collect
-            or receive information from your browser or device, such as your approximate location,
-            the pages you visit, the ads you view, and interaction data, which may be combined with
-            identifiers to personalise advertising. These third parties are independent data
-            controllers and operate under their own privacy policies.
+            Não definimos cookies de marketing próprios. No entanto, o nosso provedor de
+            publicidade pode utilizar cookies, pixels ou tecnologias semelhantes para exibir
+            anúncios com base em visitas anteriores a este e a outros sites, conforme descrito na
+            seção de publicidade abaixo.
+          </p>
+        </Section>
+
+        <Section n="5" title="Publicidade e identificadores de terceiros">
+          <p>
+            Financiamos as utilitárias gratuitas com publicidade veiculada pelo{" "}
+            <strong>Google AdSense</strong> e seus parceiros certificados. O Google e seus parceiros
+            podem usar cookies e identificadores de publicidade (como o Google Advertising ID no
+            Android e o IDFA no iOS) para exibir anúncios, inclusive personalizados exibidos em
+            outros sites, e para medir o desempenho dessas peças.
           </p>
           <p>
-            You can opt out of personalised advertising by visiting{" "}
+            Quando um anúncio é exibido, redes e fornecedores de anúncios de terceiros podem
+            coletar ou receber informações do seu navegador ou dispositivo, como localização
+            aproximada, páginas visitadas, anúncios exibidos e dados de interação — que podem ser
+            combinados com identificadores para personalizar a publicidade. Esses terceiros são
+            controladores de dados independentes e operam sob as suas próprias políticas de
+            privacidade.
+          </p>
+          <p>
+            Você pode desativar a publicidade personalizada em{" "}
             <a
               href="https://www.google.com/settings/ads"
               className="font-medium text-accent"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Google&apos;s Ads Settings
+              Configurações de anúncios do Google
             </a>{" "}
-            or{" "}
+            ou em{" "}
             <a
               href="https://www.aboutads.info/choices"
               className="font-medium text-accent"
@@ -120,104 +127,107 @@ export default function PrivacyPage() {
             >
               www.aboutads.info/choices
             </a>
-            . For users in the European Economic Area, the UK and Switzerland, we rely on AdSense&apos;s
-            consent frameworks (including TCF from IAB Europe where applicable) to legally serve
-            personalised ads, and you will see an appropriate consent prompt before such ads load.
+            . Para usuários do Espaço Econômico Europeu, do Reino Unido e da Suíça, utilizamos os
+            frameworks de consentimento do AdSense (incluindo o TCF da IAB Europa, quando aplicável)
+            para exibir anúncios personalizados de forma legal, e você verá um aviso de consentimento
+            antes que esses anúncios sejam carregados.
           </p>
           <p>
-            We may also include affiliate links to developer tool providers. Clicking these links
-            may earn us a commission; the merchant you visit handles your data under its own
-            privacy policy.
-          </p>
-        </Section>
-
-        <Section n="6" title="Legal bases for processing (GDPR)">
-          <p>
-            Where the GDPR applies, the processing of your data is based on: (a) your consent,
-            which you may withdraw at any time, for advertising and personalisation; (b) our
-            legitimate interest in operating, securing and improving the service, where your
-            interests and fundamental rights do not override those interests; and (c) compliance
-            with legal obligations, such as responding to lawful requests from competent
-            authorities.
+            Também podemos incluir links de afiliados para provedores de ferramentas de
+            desenvolvimento. Clicar nesses links pode gerar uma comissão para nós, sem qualquer
+            custo adicional para você; o lojista que você visitar trata os seus dados sob a sua
+            própria política de privacidade.
           </p>
         </Section>
 
-        <Section n="7" title="Your privacy rights">
+        <Section n="6" title="Bases legais do tratamento (GDPR)">
           <p>
-            Depending on your jurisdiction, you may have the right to: access the personal data we
-            hold about you; request rectification of inaccurate data; request erasure; restrict or
-            object to processing; data portability (LGPD Art. 18 and GDPR Art. 20); and withdraw
-            consent at any time. Because the tools themselves process content locally, most of
-            these rights relate to the limited technical and advertising data described above.
+            Onde o GDPR se aplica, o tratamento dos seus dados se baseia: (a) no seu consentimento,
+            que pode ser revogado a qualquer momento, para publicidade e personalização; (b) no
+            nosso legítimo interesse em operar, proteger e melhorar o serviço, desde que os seus
+            interesses e direitos fundamentais não prevalecam; e (c) no cumprimento de obrigações
+            legais, como responder a requisições legítimas de autoridades competentes.
+          </p>
+        </Section>
+
+        <Section n="7" title="Seus direitos de privacidade">
+          <p>
+            Dependendo da sua jurisdição, você pode ter direito a: acessar os dados pessoais que
+            temos sobre você; solicitar a retificação de dados inexatos; solicitar a eliminação;
+            restringir ou se opor ao tratamento; à portabilidade dos dados (LGPD art. 18 e GDPR
+            art. 20); e revogar o consentimento a qualquer momento. Como as ferramentas processam o
+            conteúdo localmente, a maior parte desses direitos se refere aos dados técnicos e
+            publicitários limitados descritos acima.
           </p>
           <p>
-            To exercise any of these rights, including through a data subject access request,
-            contact us at{" "}
+            Para exercer qualquer um desses direitos, inclusive por meio de uma requisição de
+            acesso do titular, entre em contato pelo e-mail{" "}
             <a href={`mailto:${site.legalEmail}`} className="font-medium text-accent">
               {site.legalEmail}
             </a>
-            . We respond within the legally required timeframe and may ask you to verify your
-            identity. You also have the right to lodge a complaint with your local data protection
-            authority (such as the ANPD in Brazil or a European supervisory authority).
+            . Respondemos dentro do prazo legalmente exigido e podemos pedir que você confirme sua
+            identidade. Você também tem o direito de apresentar uma reclamação à autoridade de
+            proteção de dados competente (como a ANPD no Brasil ou uma autoridade supervisory
+            europeia).
           </p>
         </Section>
 
-        <Section n="8" title="International data transfers">
+        <Section n="8" title="Transferências internacionais de dados">
           <p>
-            Advertising partners and analytics providers that process technical data may transfer
-            it to servers outside your country of residence. Where required by the GDPR, such
-            transfers are safeguarded through Standard Contractual Clauses or equivalent lawful
-            transfer mechanisms, and your information is protected to the standards described in
-            this policy.
+            Parceiros de publicidade e provedores de analytics que processam dados técnicos podem
+            transferi-los para servidores fora do seu país de residência. Quando exigido pelo GDPR,
+            essas transferências são protegidas por cláusulas contratuais padrão ou mecanismos
+            válidos equivalentes, e as suas informações ficam sujeitas aos padrões descritos nesta
+            política.
           </p>
         </Section>
 
-        <Section n="9" title="Children&apos;s privacy">
+        <Section n="9" title="Privacidade de crianças">
           <p>
-            The service is intended for software developers and IT professionals and is not
-            directed to children under the age of 13 (or the applicable minimum age in your
-            jurisdiction). We do not knowingly collect personal information from children. If you
-            believe a child has provided us with personal data, please contact us and we will
-            delete it.
+            O serviço destina-se a desenvolvedores de software e profissionais de TI e não é dirigido
+            a crianças menores de 13 anos (ou a idade mínima aplicável na sua jurisdição). Não
+            coletamos conscientemente informações pessoais de crianças. Se você acreditar que uma
+            criança nos forneceu dados pessoais, entre em contato conosco e vamos excluí-los.
           </p>
         </Section>
 
-        <Section n="10" title="Security and retention">
+        <Section n="10" title="Segurança e retenção">
           <p>
-            We apply appropriate technical and organisational measures to protect the limited data
-            we handle against loss, misuse and unauthorised access. Technical and advertising data
-            is retained only for as long as necessary for the purposes described above or as
-            required by law, after which it is deleted or anonymised.
+            Aplicamos medidas técnicas e organizacionais adequadas para proteger os dados limitados
+            que tratamos contra perda, uso indevido e acesso não autorizado. Dados técnicos e
+            publicitários são mantidos apenas pelo tempo necessário para os fins descritos acima ou
+            conforme exigido por lei, período após o qual são excluídos ou anonimizados.
           </p>
         </Section>
 
-        <Section n="11" title="Changes to this policy">
+        <Section n="11" title="Alterações nesta política">
           <p>
-            We may update this Privacy Policy from time to time. Material changes will be
-            reflected by a revised &quot;Last updated&quot; date at the top of this page. Continued
-            use of the site after changes take effect constitutes acceptance of the revised policy.
+            Podemos atualizar esta Política de Privacidade periodicamente. Mudanças relevantes
+            serão refletidas na data de &quot;última atualização&quot; no topo desta página. O uso
+            contínuo do site após a entrada em vigor das alterações constitui aceitação da
+            política revisada.
           </p>
         </Section>
 
-        <Section n="12" title="Contact">
+        <Section n="12" title="Contato">
           <p>
-            Questions, feedback or privacy requests:{" "}
+            Dúvidas, comentários ou solicitações de privacidade:{" "}
             <a href={`mailto:${site.legalEmail}`} className="font-medium text-accent">
               {site.legalEmail}
             </a>
-            . See our{" "}
-            <Link href="/contact" className="font-medium text-accent">
-              Contact page
+            . Veja também a nossa{" "}
+            <Link href="/contato" className="font-medium text-accent">
+              página de contato
             </Link>{" "}
-            for more ways to reach us.
+            para outras formas de falar com a gente.
           </p>
         </Section>
       </div>
 
       <p className="mt-10 text-sm text-ink-3">
-        See also the{" "}
-        <Link href="/terms" className="font-medium text-accent">
-          Terms of Use
+        Consulte também os{" "}
+        <Link href="/termos-de-uso" className="font-medium text-accent">
+          Termos de Uso
         </Link>
         .
       </p>
