@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -24,7 +23,7 @@ const jetbrainsMono = JetBrains_Mono({
 const themeScript = `(function(){try{var t=window.localStorage.getItem("theme");if(t==="light"){document.documentElement.dataset.theme="light";}}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.stackpulse.com.br"),
+  metadataBase: new URL(site.url),
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -57,7 +56,6 @@ export const metadata: Metadata = {
   verification: {
     google: "nX8m4qySmm5h3VPp4JGJ9PwdsKzcNsJnFFyp8gkL38E",
   },
-  alternates: { canonical: "/" },
   other: {
     "google-adsense-account": "ca-pub-3836772354953908",
   },
@@ -88,13 +86,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <AdScript />
-        <Script
-          async
-          id="adsbygoogle-script"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3836772354953908"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
         <Analytics />
       </body>
     </html>

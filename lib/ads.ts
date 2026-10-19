@@ -1,5 +1,13 @@
+/**
+ * Google AdSense configuration.
+ *
+ * The publisher id matches the one published in `public/ads.txt` and in the
+ * `google-adsense-account` meta tag, so ads work out of the box. The ad unit
+ * ids can be overridden with environment variables when new slots are created
+ * in the AdSense dashboard.
+ */
 export const ADSENSE_CLIENT =
-  process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "ca-pub-XXXXXXXXXXXXXXXX";
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "ca-pub-3836772354953908";
 
 const PLACEHOLDER_CLIENT = "ca-pub-XXXXXXXXXXXXXXXX";
 
