@@ -6,8 +6,6 @@ import {
   Braces,
   Check,
   ClipboardPaste,
-  Copy,
-  Download,
   FileCode2,
   RefreshCw,
   Trash2,
@@ -20,8 +18,15 @@ import {
   type IndentSize,
   type ConvertResult,
 } from "@/lib/jsonToTypescript";
-
-const RUN_HINT = " to run";
+import {
+  CopyButton,
+  DownloadButton,
+  KeyboardHints,
+  OptionGroup,
+  ToolShell,
+  ToolStatus,
+  useCopy,
+} from "@/components/tools/tool-panel";
 
 export function JsonToTypescript() {
   const [input, setInput] = useState(SAMPLE_JSON);
@@ -30,9 +35,8 @@ export function JsonToTypescript() {
   const [result, setResult] = useState<ConvertResult | null>(() =>
     jsonToTypescript(SAMPLE_JSON, { style: "type", indent: 2 }),
   );
-  const [copied, setCopied] = useState(false);
+  const { copied, copy } = useCopy();
   const outputRef = useRef<HTMLDivElement>(null);
-  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,22 +60,13 @@ export function JsonToTypescript() {
       }
       if (e.key.toLowerCase() === "c" && !editing && result?.ok) {
         e.preventDefault();
-        void copyResult();
+        copy(result.code);
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, style, indent, result]);
-
-  function copyResult() {
-    if (!result?.ok) return;
-    navigator.clipboard.writeText(result.code).then(() => {
-      setCopied(true);
-      if (copyTimer.current) clearTimeout(copyTimer.current);
-      copyTimer.current = setTimeout(() => setCopied(false), 1600);
-    });
-  }
 
   async function pasteFromClipboard() {
     try {
@@ -90,9 +85,9 @@ export function JsonToTypescript() {
   }
 
   const status = useMemo(() => {
-    if (!input.trim()) return { tone: "idle", label: "Waiting for input" } as const;
-    if (!result) return { tone: "idle", label: "Ready" } as const;
-    if (!result.ok) return { tone: "error", label: "Invalid JSON" } as const;
+    if (!input.trim()) return { tone: "idle" as const, label: "Waiting for input" };
+    if (!result) return { tone: "idle" as const, label: "Ready" };
+    if (!result.ok) return { tone: "error" as const, label: "Invalid JSON" };
     const types = result.typeCount;
     return {
       tone: "ok" as const,
@@ -100,21 +95,10 @@ export function JsonToTypescript() {
     };
   }, [input, result]);
 
-  const optionBtn = (active: boolean) =>
-    `inline-flex h-9 items-center justify-center rounded-lg border px-3 text-xs font-semibold transition-colors ${
-      active
-        ? "border-accent/50 bg-accent/[0.14] text-accent"
-        : "border-line text-ink-3 hover:text-ink-2"
-    }`;
-
   return (
-    <section
-      id="tool"
-      className="overflow-hidden rounded-3xl border border-line bg-surface"
-      aria-label="JSON to TypeScript converter"
-    >
+    <ToolShell label="JSON to TypeScript converter">
       <div className="flex items-center justify-between border-b border-line bg-surface-2 px-3 py-2">
-        <div className="flex items-center gap-1" role="tablist" aria-label="Panes">
+        <div className="flex items-center gap-1">
           <span className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-ink-2">
             <Braces className="h-3.5 w-3.5 text-accent" /> Input
           </span>
@@ -122,51 +106,35 @@ export function JsonToTypescript() {
             <FileCode2 className="h-3.5 w-3.5" /> Output
           </span>
         </div>
-        <span
-          className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium ${
-            status.tone === "ok"
-              ? "border-ok/40 bg-ok/[0.12] text-ok"
-              : status.tone === "error"
-                ? "border-danger/40 bg-danger/[0.12] text-danger"
-                : "border-line bg-surface text-ink-3"
-          }`}
-        >
+        <ToolStatus tone={status.tone}>
           {status.tone === "ok" ? (
             <Check className="h-3.5 w-3.5" />
           ) : status.tone === "error" ? (
             <AlertCircle className="h-3.5 w-3.5" />
           ) : null}
           {status.label}
-        </span>
+        </ToolStatus>
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line px-3 py-2">
-        <div className="flex rounded-lg p-0.5" role="group" aria-label="Declaration style">
-          {(["type", "interface"] as const).map((value) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setStyle(value)}
-              aria-pressed={style === value}
-              className={optionBtn(style === value)}
-            >
-              {value}
-            </button>
-          ))}
-        </div>
-        <div className="flex rounded-lg p-0.5" role="group" aria-label="Indentation">
-          {([2, 4] as const).map((value) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setIndent(value)}
-              aria-pressed={indent === value}
-              className={optionBtn(indent === value)}
-            >
-              {value} spaces
-            </button>
-          ))}
-        </div>
+        <OptionGroup
+          label="Declaration style"
+          options={[
+            { value: "type", label: "type" },
+            { value: "interface", label: "interface" },
+          ]}
+          value={style}
+          onChange={(next) => setStyle(next)}
+        />
+        <OptionGroup
+          label="Indentation"
+          options={[
+            { value: 2, label: "2 spaces" },
+            { value: 4, label: "4 spaces" },
+          ]}
+          value={indent}
+          onChange={(next) => setIndent(next)}
+        />
       </div>
 
       <div className="flex flex-col lg:flex-row lg:items-stretch">
@@ -220,9 +188,7 @@ export function JsonToTypescript() {
             }}
             className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-accent px-4 text-sm font-semibold text-white shadow-glow transition-transform hover:-translate-y-0.5 active:translate-y-0 lg:flex-none"
           >
-            <Braces className="h-4 w-4" />
-            <span className="lg:hidden">Generate</span>
-            <span className="hidden lg:inline">Generate</span>
+            <Braces className="h-4 w-4" /> Generate
           </button>
           <button
             type="button"
@@ -244,34 +210,16 @@ export function JsonToTypescript() {
               TypeScript output
             </span>
             <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={copyResult}
-                disabled={!result?.ok}
-                className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-line px-2.5 text-xs font-medium text-ink-2 transition-colors hover:border-accent/40 hover:text-accent disabled:opacity-40"
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-3.5 w-3.5 text-ok" /> Copied
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-3.5 w-3.5" /> Copy
-                  </>
-                )}
-              </button>
-              <a
+              <CopyButton onClick={() => result?.ok && copy(result.code)} copied={copied} disabled={!result?.ok} />
+              <DownloadButton
                 href={
                   result?.ok
                     ? `data:text/plain;charset=utf-8,${encodeURIComponent(result.code)}`
                     : undefined
                 }
-                download="types.ts"
-                aria-disabled={!result?.ok}
-                className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-line px-2.5 text-xs font-medium text-ink-2 transition-colors hover:border-accent/40 hover:text-accent disabled:pointer-events-none disabled:opacity-40"
-              >
-                <Download className="h-3.5 w-3.5" /> Download
-              </a>
+                fileName="types.ts"
+                disabled={!result?.ok}
+              />
             </div>
           </div>
 
@@ -292,22 +240,9 @@ export function JsonToTypescript() {
             </div>
           )}
 
-          <div className="hidden items-center justify-between border-t border-line px-3 py-2 text-[11px] text-ink-3 lg:flex">
-            <span className="inline-flex items-center gap-1.5">
-              <kbd className="rounded border border-line bg-surface-2 px-1.5 py-0.5 font-mono">Ctrl</kbd>
-              +
-              <kbd className="rounded border border-line bg-surface-2 px-1.5 py-0.5 font-mono">Enter</kbd>
-              {RUN_HINT}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <kbd className="rounded border border-line bg-surface-2 px-1.5 py-0.5 font-mono">Ctrl</kbd>
-              +
-              <kbd className="rounded border border-line bg-surface-2 px-1.5 py-0.5 font-mono">C</kbd>
-              to copy
-            </span>
-          </div>
+          <KeyboardHints />
         </div>
       </div>
-    </section>
+    </ToolShell>
   );
 }
